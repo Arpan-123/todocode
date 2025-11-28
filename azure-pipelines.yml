@@ -1,0 +1,18 @@
+trigger:
+- main
+-feature*
+
+pool:target21
+
+steps:
+-
+task: TerraformTask@5
+
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+    backendServiceArm: 'mera-update'
+    backendAzureRmStorageAccountName: 'target22'
+    backendAzureRmContainerName: 'tfstate'
+    backendAzureRmKey: 'tfstate.dev'
