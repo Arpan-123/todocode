@@ -14,3 +14,26 @@ steps:
     backendAzureRmStorageAccountName: 'newsg'
     backendAzureRmContainerName: 'tfstate'
     backendAzureRmKey: 'tfstate.dev'
+
+- task: TerraformTask@5
+  displayName: terraform-validate
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+
+
+- task: TerraformTask@5
+  displayName: terraform-plan
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+    environmentServiceNameAzureRM: 'mera-update'
+
+- task: TerraformTask@5
+  displayName: terraform-apply
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    environmentServiceNameAzureRM: 'mera-update'
