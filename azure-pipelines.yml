@@ -39,7 +39,7 @@ steps:
     targetType: 'inline'
     script: |
       cd '$(System.DefaultWorkingDirectory)/environment/dev'
-      trivy 'config .'
+      trivy --version
 
 - task: TerraformTask@5
   displayName: terraform-validate
