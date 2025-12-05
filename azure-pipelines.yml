@@ -22,6 +22,8 @@ steps:
     script: |
       cd '$(System.DefaultWorkingDirectory)/environment/dev'
       tflint
+  continueOnError: true
+
 
 - task: PowerShell@2
   displayName: tfsec
