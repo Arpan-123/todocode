@@ -15,14 +15,13 @@ steps:
     backendAzureRmContainerName: 'tfstate'
     backendAzureRmKey: 'tfstate.dev'
 
-- task: AzurePowerShell@5
+- task: PowerShell@2
   displayName: tflint
   inputs:
-    azureSubscription: 'mera-update'
-    ScriptType: 'InlineScript'
-    Inline: cd "$(System.DefaultWorkingDirectory)/environment/dev"
-            tflint
-
+    targetType: 'inline'
+    script: |
+      cd '$(System.DefaultWorkingDirectory)/environment/dev'
+      tflint
 
 
 - task: TerraformTask@5
