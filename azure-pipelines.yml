@@ -20,7 +20,8 @@ steps:
   inputs:
     azureSubscription: 'mera-update'
     ScriptType: 'InlineScript'
-    Inline: 'tflint''$(System.DefaultWorkingDirectory)/environment/dev'
+    Inline: cd '$(System.DefaultWorkingDirectory)/environment/dev'
+            tflint
 
 
 
