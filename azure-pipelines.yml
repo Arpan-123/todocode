@@ -15,6 +15,15 @@ steps:
     backendAzureRmContainerName: 'tfstate'
     backendAzureRmKey: 'tfstate.dev'
 
+- task: AzurePowerShell@5
+  displayName: tflint
+  inputs:
+    azureSubscription: 'mera-update'
+    ScriptType: 'InlineScript'
+    Inline: 'tflint''$(System.DefaultWorkingDirectory)/environment/dev'
+
+
+
 - task: TerraformTask@5
   displayName: terraform-validate
   inputs:
