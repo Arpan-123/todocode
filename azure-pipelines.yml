@@ -23,6 +23,21 @@ steps:
       cd '$(System.DefaultWorkingDirectory)/environment/dev'
       tflint
 
+- task: PowerShell@2
+  displayName: tfsec
+  inputs:
+    targetType: 'inline'
+    script: |
+      cd '$(System.DefaultWorkingDirectory)/environment/dev'
+      tfsec
+
+- task: PowerShell@2
+  displayName: trivy
+  inputs:
+    targetType: 'inline'
+    script: |
+      cd '$(System.DefaultWorkingDirectory)/environment/dev'
+      trivy config
 
 - task: TerraformTask@5
   displayName: terraform-validate
